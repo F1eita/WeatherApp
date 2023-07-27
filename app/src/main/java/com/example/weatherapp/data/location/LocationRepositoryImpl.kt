@@ -37,7 +37,6 @@ class LocationRepositoryImpl(private val locationClient: FusedLocationProviderCl
             locationClient.lastLocation.apply {
                 if(isComplete) {
                     if(isSuccessful) {
-                        storage.save(result.toQ())
                         cont.resume(result, onCancellation = null)
                     } else {
                         cont.resume(null,  onCancellation = null)
@@ -45,7 +44,9 @@ class LocationRepositoryImpl(private val locationClient: FusedLocationProviderCl
                     return@suspendCancellableCoroutine
                 }
                 addOnSuccessListener {
-                    storage.save(result.toQ())
+                    if (it != null){
+                        storage.save(it.toQ())
+                    }
                     cont.resume(it, onCancellation = null)
                 }
                 addOnFailureListener {
