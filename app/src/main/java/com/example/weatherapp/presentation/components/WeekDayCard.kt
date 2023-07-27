@@ -14,30 +14,30 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun WeekDayCard(modifier: Modifier = Modifier, weekDay: String = "",
+fun WeekDayCard(weekDay: String = "",
 date: String = "", id: Int = 0, weather: String = "", minMaxTemp: String = "") {
-    Box(modifier = modifier.width(145.dp).fillMaxHeight()){
-        Box(modifier = Modifier
+
+    Box(modifier = Modifier
             .padding(4.dp)
             .background(MaterialTheme.colors.primaryVariant)
-            .fillMaxSize()
+            .fillMaxHeight().width(150.dp)
             .clip(MaterialTheme.shapes.small)){
-                Column(modifier = Modifier.padding(4.dp).fillMaxSize(),
+        Column(modifier = Modifier.padding(4.dp).fillMaxSize(),
                     horizontalAlignment = Alignment.CenterHorizontally){
                     Text(text = weekDay, style = MaterialTheme.typography.h4)
                     Text(text = date, style = MaterialTheme.typography.h6)
-                }
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Image(painter = painterResource(id = id), contentDescription = "",
+        }
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Image(painter = painterResource(id = id), contentDescription = "",
                             modifier = Modifier.size(48.dp))
-                        Text(text = weather, style = MaterialTheme.typography.h5)
-                    }
-                }
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter){
-                    Text(text = minMaxTemp, style = MaterialTheme.typography.h4,
-                        modifier = Modifier.padding(16.dp))
-                }
+                Text(text = weather, style = MaterialTheme.typography.h5)
             }
+        }
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter){
+            Text(text = minMaxTemp, style = MaterialTheme.typography.h4,
+                        modifier = Modifier.padding(16.dp))
+        }
     }
+
 }

@@ -15,8 +15,8 @@ import androidx.compose.ui.unit.dp
 fun InfoCard(modifier:Modifier = Modifier, header: String = "", information: String = "") {
     Box(modifier = modifier) {
         Box(
-            modifier = Modifier.padding(4.dp).background(MaterialTheme.colors.primary).width(145.dp)
-                .fillMaxHeight().clip(MaterialTheme.shapes.small)
+            modifier = Modifier.padding(4.dp).background(MaterialTheme.colors.primary).
+            fillMaxSize().clip(MaterialTheme.shapes.small)
         ) {
             Text(text = header, style = MaterialTheme.typography.h4,
                 modifier = Modifier.padding(6.dp).fillMaxWidth(), textAlign = TextAlign.Center)
